@@ -99,13 +99,51 @@ public class BMITest {
 		assertEquals(app.calculateBMI(),25,0.5);
 		assertEquals(app.bmiResult(),"Overweight");
 	}
+
+	@Test
+	public void BMITest81() throws Exception{
+		app.setHeight(6.56);
+		app.setWeight(260.47);
+		assertEquals(app.calculateBMI(),29.9,0.5);
+		assertEquals(app.bmiResult(),"Overweight");
+	}
 	
 	@Test
 	public void BMITest9() throws Exception{
 		app.setHeight(200);
-		app.setWeight(80);
-		assertEquals(app.calculateBMI(),20,0.0);
+		app.setWeight(74);
+		assertEquals(app.calculateBMI(),18.5,0.0);
 		assertEquals(app.bmiResult(),"Normal");
+	}
+
+	@Test
+	public void BMITest91() throws Exception{
+		app.setHeight(200);
+		app.setWeight(99.6);
+		assertEquals(app.calculateBMI(),24.9,0.0);
+		assertEquals(app.bmiResult(),"Normal");
+	}
+
+	@Test
+	public void BMITest10() throws Exception {
+		try{
+			app.setHeight(0);
+			app.setWeight(0);
+			app.calculateBMI();
+		}catch(Exception e){
+			assertEquals(e.getMessage(),"Weight is equals or less than zero.");
+		}
+	}
+
+	@Test
+	public void BMITest11() throws Exception {
+		try{
+			app.setHeight(0);
+			app.setWeight(10);
+			app.calculateBMI();
+		}catch(Exception e){
+			assertEquals(e.getMessage(),"Height is equals or less than zero.");
+		}
 	}
 	
 }
